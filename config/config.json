@@ -1,0 +1,94 @@
+{
+  "development": {
+    "config_id": "development",
+    "DB_PORT": 5432,
+    "DB_USER": "dashboard_user",
+    "DB_PASSWORD": "Tarality@123",
+    "DB_HOST": "localhost",
+    "DB_NAME": "dashboard_db",
+
+    "dbCredential": {},
+    "swaggerDefinition": {
+      "info": {
+        "title": "nova",
+        "version": "1.0",
+        "description": "API documentation for the Tarality-Dashboard-Backend. All apis written in node js."
+      },
+      "basePath": "/",
+      "securityDefinitions": {
+        "tokenauth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    }
+  },
+  "staging": {
+    "config_id": "staging",
+    "port": 5437,
+    "DB_HOST_IN": "103.182.210.198",
+    "hostAddress": "103.182.210.198",
+    "userName": "pgnows",
+    "databasePassword": "jedjehSAfeis",
+    "databaseName": "nowa",
+    "ENCRYPTION_KEY": "e6da5a524e6f738f79215017ae42cbc5b17f0367c539a21e8d3a75623d1881f5",
+    "JWT_SECRET": "6a490d7d6b9fe1a2e0883e7aa6ddf3b095d26d5029105f347bc704dfd33a1890",
+    "CMC_API_KEY": "1b4ba938-3c82-44b4-95be-3b99bfe5b6e6",
+
+    "EMAIL_USER": "aryanpandita003@gmail.com",
+    "EMAIL_APP_PASSWORD": "qngn vfhx mwdb hvha",
+
+    "RECAPTCHA_SITE_KEY": "6Lf6hZYrAAAAAOEf3LNWuPatMSDfkWvxSCd5zJfa",
+    "RECAPTCHA_SECRET_KEY": "6Lf6hZYrAAAAAMIbn03YlbxPj2qebwEFMj97SUt7",
+
+    "TWITTER_API_KEY": "MyTp50PPnehLypgikfoPQkHEK",
+    "TWITTER_API_SECRET": "dW6gyKSDLGaaDSIBCEDpus4dq267pUEjtIRGKdQswWSAJACMGz",
+    "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAAGA4uQEAAAAAItKIJXMOc58Fx04REhuNyQ6Of2I%3DnJhcE9xpVbt9Jsk1jToFiFF4DcOdObz8CWUKJGEXRkr9nSNQ4q",
+    "TWITTER_ACCESS_TOKEN": "1763295046026096640-B1g18ytUlW7cbCQ03fAW5YKivTaWGk",
+    "TWITTER_ACCESS_TOKEN_SECRET": "l39WsaXfEnHIUL17gnRDsi13ImEMvYa9a9QvJrU8frOqr",
+
+    "TELEGRAM_BOT_TOKEN": "654321987:AAFbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTt",
+    "TELEGRAM_CHANNEL_ID": "@nowacoincommunity",
+
+    "swaggerDefinition": {
+      "info": {
+        "title": "nova",
+        "version": "1.0",
+        "description": "API documentation for the Tarality-Dashboard-Backend. All apis written in node js."
+      },
+      "basePath": "/",
+      "securityDefinitions": {
+        "tokenauth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    }
+  },
+  "production": {
+    "config_id": "production",
+    "port": 5437,
+    "hostAddress": "",
+    "userName": "",
+    "databasePassword": "",
+    "databaseName": "",
+    "dbPort": 5437,
+    "swaggerDefinition": {
+      "info": {
+        "title": "Tarality-Dashboard-Backend",
+        "version": "1.0",
+        "description": "API documentation for the Tarality-Dashboard-Backend. All apis written in node js."
+      },
+      "basePath": "/",
+      "securityDefinitions": {
+        "tokenauth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    }
+  }
+}

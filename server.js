@@ -1,24 +1,41 @@
-const express = require('express');
+import express, { json } from 'express';
 const app = express();
-const cors = require('cors');
-const walletRoutes = require('./user/wallet');
+import cors from 'cors';
+import walletRoutes from './router/wallet.js';
+import config from './config/config.json' assert { type: 'json' };
 
 
+const stagingConfig = config.development;
 
+
+// ✅ Swagger imports
+import { swaggerUi, swaggerSpec } from "./swagger.js";
 
 // CORS configuration - Allow all origins
 app.use(cors({
     origin: '*',
-    credentials: false, // Set to false when using wildcard origin
+    credentials: false,
     optionsSuccessStatus: 200
 }));
 
-app.use(express.json());
+app.use(json());
+
+// ✅ Swagger route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Mount wallet routes
 app.use('/wallet', walletRoutes);
 
-// Health check endpoint
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Health check root
+ *     description: Returns server status
+ *     responses:
+ *       200:
+ *         description: Server is running
+ */
 app.get('/', (req, res) => {
     res.json({ 
         message: 'Server is running!',
@@ -27,7 +44,18 @@ app.get('/', (req, res) => {
     });
 });
 
-// Database health check endpoint
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Database health check
+ *     description: Returns DB connection status
+ *     responses:
+ *       200:
+ *         description: Database connected
+ *       500:
+ *         description: Database disconnected
+ */
 app.get('/health', async (req, res) => {
     try {
         const client = await pool.connect();
@@ -56,8 +84,9 @@ process.on('SIGINT', async () => {
     process.exit(0);
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = stagingConfig.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📊 Health check available at http://localhost:${PORT}/health`);
+    console.log(`📖 Swagger docs available at http://localhost:${PORT}/api-docs`);
 });
