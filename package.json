@@ -1,6 +1,7 @@
 {
   "name": "wallet-claims-api",
   "version": "1.0.0",
+   "type": "module",
   "description": "API for handling wallet claims with PostgreSQL database",
   "main": "server.js",
   "scripts": {

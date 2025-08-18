@@ -1,6 +1,6 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
-import config from '../config/config.json' assert { type: 'json' };
+import config from '../config/config.json' with { type: 'json' };
 
 
 const stagingConfig = config.development;

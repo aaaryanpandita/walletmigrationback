@@ -2,15 +2,12 @@ import express, { json } from 'express';
 const app = express();
 import cors from 'cors';
 import walletRoutes from './router/wallet.js';
-import config from './config/config.json' assert { type: 'json' };
+import config from './config/config.json' with { type: 'json' };
+import pool from './connector/db.js';
+import { swaggerUi, swaggerSpec } from "./swagger.js";
 
 
 const stagingConfig = config.development;
-
-
-// ✅ Swagger imports
-import { swaggerUi, swaggerSpec } from "./swagger.js";
-
 // CORS configuration - Allow all origins
 app.use(cors({
     origin: '*',
@@ -79,7 +76,7 @@ app.get('/health', async (req, res) => {
 // Graceful shutdown
 process.on('SIGINT', async () => {
     console.log('\n🔄 Shutting down gracefully...');
-    await pool.end();
+    
     console.log('✅ Database connections closed');
     process.exit(0);
 });
